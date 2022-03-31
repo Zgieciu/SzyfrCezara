@@ -13,8 +13,10 @@ string encryption(string text, int shift) {
             if (text[i] > 90) text[i] -= 26;
         }
         else if (text[i] >= 97 && text[i] <= 122) { // małe litery 
-            text[i] += shift;
-            if (text[i] > 122) text[i] -= 26;
+            int pom = text[i];
+            pom += shift;                     //zmienna pomocnicza, używana do tego, aby index nie przekroczył rozmiaru tablicy ASCII
+            if (pom > 122) pom -= 26;
+            text[i] = pom;
         }
     }
 
@@ -48,12 +50,16 @@ int main()
     cout << "Szyfr Cezara" << endl;
     cout << "Podaj wartość przesunięcia:";
     cin >> shift;
+    while (shift < 1) {
+        cout << "Przesunięcie nie może być liczbą ujemną oraz 0, podaj przesunięcie jeszcze raz:";
+        cin >> shift;
+    }
     if (shift > 26) shift = 26;
+
     cout << endl << "Wybierz opcję 1/2:" << endl;
     cout << "1. Szyfrowanie" << endl;
     cout << "2. Deszyfrowanie" << endl;
     cout << endl;
-
 
     do {
         cin >> option;
