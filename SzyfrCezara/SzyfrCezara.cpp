@@ -1,5 +1,7 @@
 ﻿#include <iostream>
 #include <string>
+#include <fstream>
+#include <stdio.h>
 
 using namespace std;
 
@@ -44,8 +46,9 @@ string decryption(string text, int shift) {
 int main()
 {
     setlocale(LC_CTYPE, "Polish");
-    int shift, option;
-    string text;
+    int shift, option, option2;
+    string text, line;
+    fstream file;
 
     cout << "Szyfr Cezara" << endl;
     cout << "Podaj wartość przesunięcia:";
@@ -64,13 +67,71 @@ int main()
     do {
         cin >> option;
         if (option == 1) {
-            cout << "Wybrno szyfrowanie\n" << endl << "Podaj tekst do zaszyfrowania: " << endl;
-            getline(cin >> ws, text);
+            cout << "Wybrno szyfrowanie\n";                   //szyfrowanie
+
+            cout << endl << "Wybierz opcję 1/2:" << endl;
+            cout << "1. Szyfrowanie poprzez wpisanie tekstu" << endl;
+            cout << "2. Szyfrowanie z pliku" << endl;
+            cout << endl;
+
+            do {
+                cin >> option2;
+
+                if (option2 == 1) {                       
+                    cout << endl << "Podaj tekst do zaszyfrowania: " << endl;
+                    getline(cin >> ws, text);
+                }
+                else if (option2 == 2) {
+                    file.open("szyfrowanie.txt");         //podczas szyfrowania z pliku, w pliku ostatnia linijka musi zostać pusta
+
+                    do {
+                        getline(file, line);
+                        text += line + " ";
+                        
+                    } while (line != "");
+
+                    file.close();
+                }
+                else {
+                    cout << "Wybrano nie poprawną opcję, wybierz 1 lub 2" << endl;
+                }
+  
+            } while (option2 != 1 && option2 != 2);
+
             text = encryption(text, shift);
         }
         else if (option == 2) {
-            cout << "Wybrno deszyfrowanie\n" << endl << "Podaj tekst do deszyfrowania: " << endl;
-            getline(cin >> ws, text);
+            cout << "Wybrno deszyfrowanie\n";                       //deszyfrowanie
+
+            cout << endl << "Wybierz opcję 1/2:" << endl;
+            cout << "1. Deszyfrowanie poprzez wpisanie tekstu" << endl;
+            cout << "2. Deszyfrowanie z pliku" << endl;
+            cout << endl;
+
+            do {
+                cin >> option2;
+
+                if (option2 == 1) {
+                    cout << endl << "Podaj tekst do deszyfrowania: " << endl;
+                    getline(cin >> ws, text);
+                }
+                else if (option2 == 2) {
+                    file.open("deszyfrowanie.txt");          //podczas deszyfrowania z pliku, w pliku ostatnia linijka musi zostać pusta
+
+                    do {
+                        getline(file, line);
+                        text += line + " ";
+
+                    } while (line != "");
+
+                    file.close();
+                }
+                else {
+                    cout << "Wybrano nie poprawną opcję, wybierz 1 lub 2" << endl;
+                }
+
+            } while (option2 != 1 && option2 != 2);
+              
             text = decryption(text, shift);
         }
         else {
