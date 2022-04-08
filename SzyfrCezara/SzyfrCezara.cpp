@@ -9,7 +9,6 @@ using namespace std;
 string encryption(string text, int shift) {
     for (int i = 0; i < text.length(); i++)
     {
-        if (text[i] == 32) continue;  // pominięcie spacji
         if (text[i] >= 65 && text[i] <= 90) { // duże litery
             text[i] += shift;
             if (text[i] > 90) text[i] -= 26;
@@ -29,7 +28,6 @@ string encryption(string text, int shift) {
 string decryption(string text, int shift) {
     for (int i = 0; i < text.length(); i++)
     {
-        if (text[i] == 32) continue;  // pominięcie spacji
         if (text[i] >= 65 && text[i] <= 90) { // duże litery
             text[i] -= shift;
             if (text[i] < 65) text[i] += 26;
