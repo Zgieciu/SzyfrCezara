@@ -51,13 +51,7 @@ int main()
     cout << "Szyfr Cezara" << endl;
     
     do {
-        cout << endl << "Podaj wartość przesunięcia: ";
-        cin >> shift;
-        while (shift < 1 || shift > 25) {
-            cout << "Przesunięcie nie może być liczbą ujemną oraz 0, maksymalne przesunięcie wynosi 25, podaj przesunięcie jeszcze raz: ";
-            cin >> shift;
-        }
-
+        text = "";
         cout << endl << "Wybierz opcję 1/2:" << endl;
         cout << "1. Szyfrowanie" << endl;
         cout << "2. Deszyfrowanie" << endl;
@@ -68,6 +62,13 @@ int main()
             cin >> option;
             if (option == 1) {
                 cout << "Wybrno szyfrowanie\n";                   //szyfrowanie
+
+                cout << endl << "Podaj wartość przesunięcia: ";
+                cin >> shift;
+                while (shift < 1 || shift > 25) {
+                    cout << "Przesunięcie nie może być liczbą ujemną oraz 0, maksymalne przesunięcie wynosi 25, podaj przesunięcie jeszcze raz: ";
+                    cin >> shift;
+                }
 
                 cout << endl << "Wybierz opcję 1/2:" << endl;
                 cout << "1. Szyfrowanie poprzez wpisanie tekstu" << endl;
@@ -102,6 +103,13 @@ int main()
             }
             else if (option == 2) {
                 cout << "Wybrno deszyfrowanie\n";                       //deszyfrowanie
+
+                cout << endl << "Podaj wartość przesunięcia: ";
+                cin >> shift;
+                while (shift < 1 || shift > 25) {
+                    cout << "Przesunięcie nie może być liczbą ujemną oraz 0, maksymalne przesunięcie wynosi 25, podaj przesunięcie jeszcze raz: ";
+                    cin >> shift;
+                }
 
                 cout << endl << "Wybierz opcję 1/2:" << endl;
                 cout << "1. Deszyfrowanie poprzez wpisanie tekstu" << endl;
