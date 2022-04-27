@@ -61,15 +61,25 @@ int main()
         do {
             cin >> option;
             if (option == 1) {
-                cout << "Wybrno szyfrowanie\n";                   //szyfrowanie
+                cout << "Wybrno szyfrowanie\n";
+            }
+            else if (option == 2) {
+                cout << "Wybrno deszyfrowanie\n";
+            }
 
-                cout << endl << "Podaj wartość przesunięcia: ";
+            if (option == 3) {
+                cout << "Zakończono działanie programu." << endl;
+                break;
+            }
+
+            cout << endl << "Podaj wartość przesunięcia: ";           //podawanie przesunięcia 
+            cin >> shift;
+            while (shift < 1 || shift > 25) {
+                cout << "Przesunięcie nie może być liczbą ujemną oraz 0, maksymalne przesunięcie wynosi 25, podaj przesunięcie jeszcze raz: ";
                 cin >> shift;
-                while (shift < 1 || shift > 25) {
-                    cout << "Przesunięcie nie może być liczbą ujemną oraz 0, maksymalne przesunięcie wynosi 25, podaj przesunięcie jeszcze raz: ";
-                    cin >> shift;
-                }
+            }
 
+            if (option == 1) {                  //szyfrowanie
                 cout << endl << "Wybierz opcję 1/2:" << endl;
                 cout << "1. Szyfrowanie poprzez wpisanie tekstu" << endl;
                 cout << "2. Szyfrowanie z pliku" << endl;
@@ -101,16 +111,7 @@ int main()
 
                 text = encryption(text, shift);
             }
-            else if (option == 2) {
-                cout << "Wybrno deszyfrowanie\n";                       //deszyfrowanie
-
-                cout << endl << "Podaj wartość przesunięcia: ";
-                cin >> shift;
-                while (shift < 1 || shift > 25) {
-                    cout << "Przesunięcie nie może być liczbą ujemną oraz 0, maksymalne przesunięcie wynosi 25, podaj przesunięcie jeszcze raz: ";
-                    cin >> shift;
-                }
-
+            else if (option == 2) {                 //deszyfrowanie
                 cout << endl << "Wybierz opcję 1/2:" << endl;
                 cout << "1. Deszyfrowanie poprzez wpisanie tekstu" << endl;
                 cout << "2. Deszyfrowanie z pliku" << endl;
@@ -142,10 +143,7 @@ int main()
 
                 text = decryption(text, shift);
             }
-            else if (option == 3) {
-                cout << "Zakończono działanie programu." << endl;
-                break;
-            }
+            
             else {
                 cout << "Wybrano nie poprawną opcję, wybierz 1, 2 lub 3" << endl;
             }
